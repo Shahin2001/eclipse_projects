@@ -10,9 +10,9 @@ public class SecondLargest {
             if (a[i] > first) {
                 second = first;
                 first = a[i];
-            } else if (a[i] > second && a[i] != first) {
-                second = a[i];
-            }
+            } //else if (a[i] > second && a[i] != first) {
+               // second = a[i];
+           // }
         }
 
         System.out.println("The second largest element is: " + second);
