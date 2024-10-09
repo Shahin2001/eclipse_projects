@@ -3,6 +3,7 @@ package com;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
@@ -26,8 +27,13 @@ public class Example {
 		String query="create database if not exists college";
 		
 		String createquery="create table if not exists employee(id int primary key auto_increment,name varchar(45),salary int,createdAt datetime ); ";
-			
-		String insertquery="insert into employee (name,salary) values('Shaina',40000);";
+		 
+		String insertquery = "insert into employee (name, salary, createdAt) values "
+                + "('Shap', 40000, now()),"
+                + "('Ramesh', 40000, now()),"
+                + "('Rahul', 40000, now());";
+		 
+		//String insertquery="insert into employee (name,salary,createdAt) values(('Shap',40000,now()),('Ramesh',40000,now()),('Rahul',40000,now()));";
 
 
 		try {
@@ -55,6 +61,8 @@ public class Example {
 			  st = conn.prepareStatement(insertquery);
 			  st.executeUpdate();
               System.out.println("record inserted successfully...");
+              
+              showAllRecords(conn);
 			  
 			
 		} catch (SQLException e) {
@@ -70,8 +78,37 @@ public class Example {
             }
         }
 	}
+	
+	public static void showAllRecords(Connection conn) {
+		String selectquery="select* from employee";
+		PreparedStatement st=null;
+		 ResultSet rs=null;
+		 
+		 try {
+			 st = conn.prepareStatement(selectquery);
+			 rs = st.executeQuery();
+			 
+			 while (rs.next()) {
+	                int id = rs.getInt("id");
+	                String name = rs.getString("name");
+	                int salary = rs.getInt("salary");
+	                String createdAt = rs.getString("createdAt");
 
-}
+	                System.out.println(id + "\t" + name + "\t" + salary + "\t" + createdAt);
+	            }
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            try {
+	                if (rs != null) rs.close();
+	                if (st != null) st.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	      }
+		}
 
 
 
