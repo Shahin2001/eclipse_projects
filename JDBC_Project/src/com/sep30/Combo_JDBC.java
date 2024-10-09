@@ -22,7 +22,8 @@ public class Combo_JDBC {
 		
 		String query="select * from batch1194db.student";
 		
-		String createquery ="create table IF NOT EXISTS batch1194db.student1(roll int primary key,"+" name varchar(45),"+""
+		String createquery ="create table IF NOT EXISTS batch1194db.student1"
+				+ "(roll int primary key,"+" name varchar(45),"+""
 				+ "marks int)";
 		
 		//String insertquery="insert into batch1194db.student1 values(3,'shamo',50)";
