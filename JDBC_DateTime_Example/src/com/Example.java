@@ -25,7 +25,7 @@ public class Example {
 		
 		String query="create database if not exists college";
 		
-		String createquery="create table if not exists employee(id int primary key auto_increment,name varchar(45),salary int,createdAt datetime not null Default current_timestamp); ";
+		String createquery="create table if not exists employee(id int primary key auto_increment,name varchar(45),salary int,createdAt datetime ); ";
 			
 		String insertquery="insert into employee (name,salary) values('Shaina',40000);";
 
