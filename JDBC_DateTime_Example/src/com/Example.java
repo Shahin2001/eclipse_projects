@@ -26,12 +26,12 @@ public class Example {
 		
 		String query="create database if not exists college";
 		
-		String createquery="create table if not exists employee(id int primary key auto_increment,name varchar(45),salary int,createdAt datetime ); ";
+		String createquery="create table if not exists employee(id int primary key auto_increment, name varchar(45),salary int, createdAt DATETIME DEFAULT CURRENT_TIMESTAMP); ";
 		 
-		String insertquery = "insert into employee (name, salary, createdAt) values "
-                + "('Shap', 40000, now()),"
-                + "('Ramesh', 40000, now()),"
-                + "('Rahul', 40000, now());";
+		String insertquery = "insert into college.employee (name, salary) values ('Shap', 40000)";
+                 
+//                + "('Ramesh', 40000),"
+//                + "('Rahul', 40000);";
 		 
 		//String insertquery="insert into employee (name,salary,createdAt) values(('Shap',40000,now()),('Ramesh',40000,now()),('Rahul',40000,now()));";
 
@@ -92,6 +92,7 @@ public class Example {
 	                int id = rs.getInt("id");
 	                String name = rs.getString("name");
 	                int salary = rs.getInt("salary");
+
 	                String createdAt = rs.getString("createdAt");
 
 	                System.out.println(id + "\t" + name + "\t" + salary + "\t" + createdAt);
