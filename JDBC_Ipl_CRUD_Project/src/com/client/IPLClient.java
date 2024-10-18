@@ -16,7 +16,7 @@ public class IPLClient {
 		}
 		
 		System.out.println("CSK Players");
-		List<Player> cskPlayers=controller.getPlayersByTeam("RCB");
+		List<Player> cskPlayers=controller.getPlayersByTeam("CSK");
 		for(Player p:cskPlayers) {
 			System.out.println(p);
 		}
